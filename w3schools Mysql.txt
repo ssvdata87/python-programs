@@ -1,0 +1,30 @@
+w3 SQL Queries
+
+1.Group by
+------------------------
+SELECT Country,count(Country) as Number_of_customer FROM Customers group by(Country)
+			-----------******----------------
+
+2.Inner Join with Orders table and Customer Table
+-------------------------------------------------------
+SELECT Orders.OrderID, Customers.CustomerName
+FROM Orders INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID
+		-----------******----------------
+
+3.Inner Join with OrderDetails,Products and Orders table
+-----------------------------------------------------------
+SELECT OrderDetails.OrderID,Products.ProductName,Orders.CustomerID FROM ((OrderDetails 
+INNER JOIN Products on Products.ProductID = OrderDetails.ProductID) 
+INNER JOIN Orders on OrderDetails.OrderID = Orders.OrderID);
+	-----------******----------------
+4.Creating view
+---------------------
+CREATE VIEW [CUSTOMER P INFO] AS 
+SELECT OrderDetails.OrderID,Products.ProductName,Orders.CustomerID FROM ((OrderDetails 
+INNER JOIN Products on Products.ProductID = OrderDetails.ProductID) 
+INNER JOIN Orders on OrderDetails.OrderID = Orders.OrderID);
+-------------------------***********---------------------------------
+5.final output
+------------------
+SELECT * FROM [CUSTOMER P INFO] 
+LEFT JOIN Customers on [CUSTOMER P INFO].CustomerID=Customers.CustomerID
